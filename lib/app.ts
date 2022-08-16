@@ -9,14 +9,13 @@ class App {
 
   constructor () {
     this.app = express()
-    this.routes.initializeRoutes(this.app)
     this.config();
+    this.routes.initializeRoutes(this.app)
   }
 
   private config (): void {
     this.app.use(bodyParser.json())
-    this.app.post("/", (req,res) => console.log(req.body))
-    // this.app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
+    this.app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }))
   }
 }
 export default new App().app
